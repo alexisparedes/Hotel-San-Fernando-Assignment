@@ -1,0 +1,98 @@
+﻿<!-- Alexis Paredes -->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator per Night</title>
+    <style>
+        table#t01, th, td{
+        border: 1px solid black;
+    
+        }
+        p{
+
+        text-align:left;
+        }
+        th, td {
+        padding: 10px;
+        }
+        tr:nth-child(even){
+        background-color:ivory;
+        }
+
+        #btn1{
+        display:block;
+        width: 100%;
+        height:100%;
+        font-size:20px;
+        }
+
+        #quantity_
+        body{
+        background-color: white;
+    
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Calculator per Night</h1>
+
+    <p>Enter Desired Nights to Calculate Prices</p>
+
+
+    <table id="t01">
+        <form>
+            <tr>
+                <th> Hotel Packages</th>
+                <th>Prices</th>
+                <th>Number of Nights</th>
+            </tr>
+            <tr>
+                <td>Customer Prime</td>
+                <td>$100</td>
+                <td><input type="number" id="quantity_item_1" min="0" value="0" /></td>
+            </tr>
+            <tr>
+                <td>Loyal Members</td>
+                <td>$200</td>
+                <td><input type="number" id="quantity_item_2" min="0" value="0"/></td>
+            </tr>
+            <tr>
+                <td>VIP </td>
+                <td>$300</td>
+                <td><input type="number" id="quantity_item_3" min="0" value="0"/></td>
+            </tr>
+            
+            <tr>
+                <td><input type="button" id="btn1" onclick="calculateCommish()" value="Calculate"</td>
+                <td><input type="reset" value="Reset" onclick="getElementById('earnings_prompt').innerHTML = 'Your weekly earnings are <strong>$.</strong>'" /></td>
+                <td id="earnings_prompt">Your Total Cost Is : (plus taxes)<strong>$.</strong></td>
+            </tr>
+        </form>
+    </table>
+
+    <script>
+        var weekly = 50;
+        var com_pct = 100 / 100;
+        var total_cost;
+
+
+
+        function calculateCommish() {
+            var w = document.getElementById("quantity_item_1").value;
+            var x = document.getElementById("quantity_item_2").value;
+            var y = document.getElementById("quantity_item_3").value;
+
+            var sum = (100 * w) + (200 * x) + (300 * y);
+            var subtotal = sum * com_pct;
+            var total_cost = weekly + subtotal;
+
+            document.getElementById("earnings_prompt").innerHTML = "Your Total Cost Is : (plus taxes) <strong>$</strong>" + "<strong>" + total_cost +"</strong>" + "<strong>.</strong>";
+        }
+    </script>
+
+</body>
+</html>
